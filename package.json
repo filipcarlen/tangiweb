@@ -1,0 +1,24 @@
+{
+  "name": "Tuio.js",
+  "version": "0.0.1",
+  "homepage": "http://fe9lix.github.com/Tuio.js/",
+  "author": {
+    "name": "Felix Raab"
+  },
+  "licenses": [
+    {
+      "type": "GPL",
+      "url": "http://fe9lix.github.com/Tuio.js//blob/master/LICENSE-GPL"
+    }
+  ],
+  "dependencies": {
+    "express": "2.5.9",
+    "lodash": "~0.1.0",
+    "mustache": "^2.2.1",
+    "tuio": "~1.0.0"
+  },
+  "devDependencies": {
+    "qunitjs": "~1.9.0",
+    "socket.io-client": "~0.9.6"
+  }
+}

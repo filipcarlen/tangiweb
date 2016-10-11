@@ -1,0 +1,34 @@
+<div class="innerElement" style="background-color: fuchsia;">
+    <h1 class="slideshow"></h1>
+</div>
+
+<script>
+
+    //maybe must send id
+    // maybe must all have a unique class
+
+    $(document.body).on("renderTheme", function (e){
+
+        if(e.hasOwnProperty("themeRemoved")){
+            $('.'+ e.themeName).find('.slideshow').text("INGENTING");
+        }
+
+        else if(e.theme > 0){ //Do stuff if theme exists
+            if(e.hasOwnProperty("id")){
+                $('#'+ e.id).find('.slideshow').text("SLIDESHOW");
+            } else if (e.hasOwnProperty("themeName")){
+                $( "."+ e.themeName).find(".slideshow").text("SLIDESHOW");
+            }
+        }
+        else {
+            $('#'+ e.id).find('.slideshow').text("INGENTING");
+        }
+
+        // if has id
+        // render unique id
+        // if has theme
+        // render all with theme
+        // else (no theme no id
+        //render only with color
+    });
+</script>

@@ -1,0 +1,42 @@
+var sizeObjects = {
+    "text": { //0
+        "width": 20,
+        "height": 32
+    },
+    "video": { //1
+        "width": 20,
+        "height": 32
+    },
+    "slideshow": { //2
+        "width": 20,
+        "height": 32
+    },
+    "imagesound": { //3
+        "width": 20,
+        "height": 32
+    },
+    "textlink": { //4
+        "width": 20,
+        "height": 32
+    },
+    "imagetext": { //5
+        "width": 20,
+        "height": 64
+    },
+    "bigimage": { //6
+        "width": 40,
+        "height": 64
+    },
+    "smallimage": { //7
+        "width": 20,
+        "height": 32
+    },
+    "landscapeimage": { //8
+        "width": 40,
+        "height": 32
+    },
+    "longtext": { //9
+        "width": 20,
+        "height": 64
+    }
+}

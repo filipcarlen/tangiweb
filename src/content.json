@@ -1,0 +1,42 @@
+var jsonObject = {
+  "themes":[
+    {}, // Empty dummy element (index 0..)
+    { //regnskog
+        "text": "textextext",
+        "video": "video",
+        "slideshow": "slideshow",
+        "imagesound": "imagesound",
+        "textlink": "textlink",
+        "imagetext": "imagetext",
+        "bigimage": "bigimage",
+        "smallimage": "smallimage",
+        "landscapeimage": "landscapeimage",
+        "longtext": "longtext"
+
+    },
+    { // rymd
+        "text": "textextext",
+        "video": "video",
+        "slideshow": "slideshow",
+        "imagesound": "imagesound",
+        "textlink": "textlink",
+        "imagetext": "imagetext",
+        "bigimage": "bigimage",
+        "smallimage": "smallimage",
+        "landscapeimage": "landscapeimage",
+        "longtext": "longtext"
+    },
+    { // Hälsa
+        "text": "textextext",
+        "video": "video",
+        "slideshow": "slideshow",
+        "imagesound": "imagesound",
+        "textlink": "textlink",
+        "imagetext": "imagetext",
+        "bigimage": "bigimage",
+        "smallimage": "smallimage",
+        "landscapeimage": "landscapeimage",
+        "longtext": "longtext"
+    }
+  ]
+}
