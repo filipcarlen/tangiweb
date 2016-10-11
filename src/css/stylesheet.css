@@ -3,7 +3,7 @@ html{
 }
 
 .myHeader{
-	height:10vh;
+	height:10%;
 	width: 100%;
 	background-color: white;
 	margin: 0;
@@ -13,7 +13,7 @@ html{
 
 body {
 	width: 100%;
-	height: 100vh;
+	height: 100%;
 	position:relative;
 	margin: 0;
 	background: #ffbaba; /* Old browsers */
@@ -23,13 +23,13 @@ body {
 }
 
 .container {
-	height: 80vh;
+	height: 90%;
 	width: 100%;
 	position: relative;
 }
 
 .myFooter {
-	height: 10vh;
+	height: 10%;
 	width: 100%;
 	background-color: white;
 	margin: 0;
@@ -37,13 +37,22 @@ body {
 }
 
 .element {
-	border-radius: 25px;
 	position: absolute;
 	background-color: clear; 
 	opacity: 0;
+    text-align: center;
+    padding: 0.25%;
 }
 
 .innerElement {
     width: 100%;
     height: 100%;
+    border-radius: 25px;
+    top: 0;
+    left: 0;
+}
+
+h1, h2, h3, h4, a, p, img{
+    padding: 0;
+    margin: 0;
 }

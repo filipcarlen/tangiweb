@@ -1,2 +1,23 @@
 <div class="innerElement" style="background-color: red;">
+    <h2 class="text"></h2>
 </div>
+
+<script>
+    $(document.body).on("renderTheme", function (e){
+
+        if(e.hasOwnProperty("themeRemoved")){
+            $('.'+ e.themeName).find('.text').text("");
+        }
+
+        else if(e.theme > 0){ //Do stuff if theme exists
+            if(e.hasOwnProperty("id")){
+                $('#'+ e.id).find('.text').text(content.themes[e.theme].text);
+            } else if (e.hasOwnProperty("themeName")){
+                $( "."+ e.themeName).find(".text").text(content.themes[e.theme].text);
+            }
+        }
+        else {
+            $('#'+ e.id).find('.text').text("");
+        }
+    });
+</script>

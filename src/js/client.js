@@ -26,7 +26,7 @@
             var currentTheme3 = -1;
 
             onAddTuioObject = function(addObject) {
-                console.log(jsonObject);
+                console.log(content);
                 // Protocol in future
                 // symbolID < 10 => themes and templates and stuff
                 // 1-5: themes
@@ -47,11 +47,11 @@
 
                         //send event to render with new stuff
                         // signalera all skit
-                        currentTheme2 = 1;
-                        $('.theme2').trigger({
+                        currentTheme1 = 1;
+                        $('.theme1').trigger({
                             type: "renderTheme",
-                            theme: currentTheme2,
-                            themeName: 'theme2'
+                            theme: currentTheme1,
+                            themeName: 'theme1'
                         });
 
                     // if it is a background color
@@ -128,22 +128,30 @@
                     var b = document.getElementById(updateObject.symbolId);
                     var width = parseInt(b.style.width.substring(0, b.style.width.length - 1));
                     var height = parseInt(b.style.height.substring(0, b.style.height.length - 1));
-                    console.log("xPos: "+calculateXPosition((width/100), updateObject.xPos).toFixed(0)+"| yPos: "+calculateYPosition((height/100), updateObject.yPos).toFixed(0));
-                    var xPos = calculateXPosition((width/100), updateObject.xPos).toFixed(0);
+                    var xPos = 100-calculateXPosition((width/100), updateObject.xPos).toFixed(0);
                     var yPos = calculateYPosition((height/100), updateObject.yPos).toFixed(0);
 
+                    if(xPos%2 !== 0){
+                        xPos++;
+                    }
+
+                    if(yPos%2 !== 0){
+                        yPos++;
+                    }
 
                     // Make the div stay inside of containers bounds
                     if(yPos < 0){
                         yPos = 0;
-                    } else if(yPos > 100){
-                        yPos = 100;
+                    } else if(yPos > 67){
+                        yPos = 67;
                     }
                     if(xPos < 0){
                         xPos = 0;
-                    } else if(xPos > 81){
+                    } else if(xPos > 80){
                         xPos = 81;
                     }
+
+                    console.log("id: "+updateObject.symbolId+ "    xPos: "+xPos+"| yPos: "+yPos);
 
 
 //                    if(0 <= xPos && 20 > xPos ){
@@ -168,6 +176,8 @@
 //                    }
 
 
+
+                    // set values
                     b.style.left = xPos+ '%';
                     b.style.top = yPos+ '%';
                     b.style.opacity = 1;
@@ -224,6 +234,7 @@
 
             getElementType = function(objectId){
                 //get type
+                //Array instead????
                 var type = objectId % 10;
 
                 if(type === 0){
@@ -267,7 +278,7 @@
             },
 
             calculateXPosition = function(widthRatio, xPos) {
-                return ((xPos * calculateXScaleFactor()) - (widthRatio / 2)) * 100;
+                return ((xPos * calculateXScaleFactor()) + (widthRatio / 2)) * 100;
             },
 
             calculateYPosition = function(heightRatio, yPos) {
@@ -275,11 +286,11 @@
             },
 
             getXMax = function() {
-                return 1.0;
+                return 0.90;
             },
 
             getYMax = function() {
-                return 1.0;
+                return 0.75;
             },
 
             onRefresh = function(time) {

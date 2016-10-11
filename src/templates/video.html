@@ -1,2 +1,23 @@
 <div class="innerElement" style="background-color: goldenrod">
+    <iframe class="video" width="100%" height="100%" src="" frameborder="0" allowfullscreen></iframe>
 </div>
+
+<script>
+    $(document.body).on("renderTheme", function (e){
+
+        if(e.hasOwnProperty("themeRemoved")){
+            $('.'+ e.themeName).find('.video').attr("src","");
+        }
+
+        else if(e.theme > 0){ //Do stuff if theme exists
+            if(e.hasOwnProperty("id")){
+                $('#'+ e.id).find('.video').attr("src",content.themes[e.theme].video);
+            } else if (e.hasOwnProperty("themeName")){
+                $( "."+ e.themeName).find('.video').attr("src",content.themes[e.theme].video);
+            }
+        }
+        else {
+            $('#'+ e.id).find('.video').attr("src","");
+        }
+    });
+</script>

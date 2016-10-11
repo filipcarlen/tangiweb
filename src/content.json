@@ -1,15 +1,24 @@
-var jsonObject = {
+var content = {
   "themes":[
     {}, // Empty dummy element (index 0..)
     { //regnskog
-        "text": "textextext",
-        "video": "video",
-        "slideshow": "slideshow",
+        "text": "Fyra miljoner olika växt- och och djurarter har sitt hem i regnskogen. " +
+                "Riktigt alla finns förstås inte på Universeum, för alla är inte ens upptäckta ännu.",
+        "video": "https://www.youtube.com/embed/9IYJF_teZV4",
+        "slideshow": {
+            "img1": "img/rainforest/slideshow/1.png",
+            "img2": "img/rainforest/slideshow/2.png",
+            "img3": "img/rainforest/slideshow/3.png"
+        },
         "imagesound": "imagesound",
-        "textlink": "textlink",
+        "textlink": {
+            "text": "hhhrer",
+            "link": "www.svt.se",
+            "linktext": "fsfds"
+        },
         "imagetext": "imagetext",
         "bigimage": "bigimage",
-        "smallimage": "smallimage",
+        "smallimage": "img/rainforest/frog.png",
         "landscapeimage": "landscapeimage",
         "longtext": "longtext"
 
@@ -17,9 +26,17 @@ var jsonObject = {
     { // rymd
         "text": "textextext",
         "video": "video",
-        "slideshow": "slideshow",
+        "slideshow": {
+            "img1": "img/space/slideshow/1.png",
+            "img2": "img/space/slideshow/2.png",
+            "img3": "img/space/slideshow/3.png"
+        },
         "imagesound": "imagesound",
-        "textlink": "textlink",
+        "textlink": {
+            "text": "hhhrer",
+            "link": "www.svt.se",
+            "linktext": "fsfds"
+        },
         "imagetext": "imagetext",
         "bigimage": "bigimage",
         "smallimage": "smallimage",
@@ -29,9 +46,17 @@ var jsonObject = {
     { // Hälsa
         "text": "textextext",
         "video": "video",
-        "slideshow": "slideshow",
+        "slideshow": {
+            "img1": "img/health/slideshow/1.png",
+            "img2": "img/health/slideshow/2.png",
+            "img3": "img/health/slideshow/3.png"
+        },
         "imagesound": "imagesound",
-        "textlink": "textlink",
+        "textlink": {
+            "text": "hhhrer",
+            "link": "www.svt.se",
+            "linktext": "fsfds"
+        },
         "imagetext": "imagetext",
         "bigimage": "bigimage",
         "smallimage": "smallimage",
