@@ -1,23 +1,30 @@
-<div class="innerElement imagesound" style="background-color: green;">
-    <img id="my_image" style="width:100%;height:100%;">
+<div class="innerElement" style="background-color: green;">
+    <img class="imagesound" src="" style="width: 100%; height: 100%; border-radius: 25px;">
+    <audio controls>
+        <source class="sound" src="" type="audio/mp3">
+    </audio>
 </div>
 
 <script>
     $(document.body).on("renderTheme", function (e){
 
         if(e.hasOwnProperty("themeRemoved")){
-            $('.'+ e.themeName).find('.slideshow').text("INGENTING");
+            $('.'+ e.themeName).find('.sound').attr("src","");
+            $('.'+ e.themeName).find('.imagesound').attr("src","");
         }
 
         else if(e.theme > 0){ //Do stuff if theme exists
             if(e.hasOwnProperty("id")){
-                $('#'+ e.id).find('.slideshow').text("SLIDESHOW");
+                $('#'+ e.id).find('.sound').attr("src",content.themes[e.theme].imagesound.image);
+                $('#'+ e.id).find('.imagesound').attr("src",content.themes[e.theme].imagesound.sound);
             } else if (e.hasOwnProperty("themeName")){
-                $( "."+ e.themeName).find(".slideshow").text("SLIDESHOW");
+                $( "."+ e.themeName).find('.sound').attr("src",content.themes[e.theme].imagesound.image);
+                $( "."+ e.themeName).find('.imagesound').attr("src",content.themes[e.theme].imagesound.sound);
             }
         }
         else {
-            $('#'+ e.id).find('.slideshow').text("INGENTING");
+            $('#'+ e.id).find('.sound').attr("src","");
+            $('#'+ e.id).find('.imagesound').attr("src","");
         }
     });
 </script>

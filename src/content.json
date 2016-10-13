@@ -2,66 +2,109 @@ var content = {
   "themes":[
     {}, // Empty dummy element (index 0..)
     { //regnskog
-        "text": "Fyra miljoner olika växt- och och djurarter har sitt hem i regnskogen. " +
-                "Riktigt alla finns förstås inte på Universeum, för alla är inte ens upptäckta ännu.",
-        "video": "https://www.youtube.com/embed/9IYJF_teZV4",
+        "text": "Four million different plant- and animal species has their home in the rainforest." +
+                " All of them cannot be found at Universeum, and not all of them are discovered yet.",
+        "video": "https://www.youtube.com/embed/yp0lrDHMFmY",
         "slideshow": {
             "img1": "img/rainforest/slideshow/1.png",
             "img2": "img/rainforest/slideshow/2.png",
             "img3": "img/rainforest/slideshow/3.png"
         },
-        "imagesound": "imagesound",
-        "textlink": {
-            "text": "hhhrer",
-            "link": "www.svt.se",
-            "linktext": "fsfds"
+        "imagesound": {
+            "image": "img/rainforst/frog.png",
+            "sound": "img/rainforest/frog.mp3"
         },
-        "imagetext": "imagetext",
-        "bigimage": "bigimage",
+        "textlink": {
+            "text": " A Rainforest is a forest with a high annual rainfall, at least 1500 millimeter distributed" +
+                    " over a minimum of nine months. Real rainforest only exist in the tropics. Read more at:",
+            "link": "https://sv.wikipedia.org/wiki/Regnskog",
+            "linktext": "Rainforest"
+        },
+        "imagetext": {
+            "image": "hjalmbasilisk.png",
+            "text": "Plummed Basilisk2" +
+                    "(Basiliscus plumifrons)" +
+                    "A basilisk can run several meters on water on its rear legs. Therefore, it is sometimes refered to as the Jesus lizard."
+        },
+        "bigimage": "img/rainforest/Goeldisapa.png",
         "smallimage": "img/rainforest/frog.png",
-        "landscapeimage": "landscapeimage",
-        "longtext": "longtext"
+        "landscapeimage": "img/rainforest/ibis.png",
+        "longtext": "The rainforest of Universeum is a model of a south american tropical rainforest," +
+                    " a so called neo-tropical rainforest. It is really hot and sweaty! The temperature in a neotropical rainforest" +
+                    " is 20-25 degrees celsius during the entire year. However, the temperature is perceived much higher because of the " +
+                    "relative air humidity is often over 90 percent. You will experience this when entering the rainforest of Universeum."
 
     },
     { // rymd
-        "text": "textextext",
-        "video": "video",
+        "text": "There can be a 300 degree celsius difference between light and shadow outside the space station." +
+                " The surfaces that are facing the sun are really really hot, and the ones in shadow are freezing.",
+        "video": "https://www.youtube.com/embed/Lq_shHu4lAs",
         "slideshow": {
             "img1": "img/space/slideshow/1.png",
             "img2": "img/space/slideshow/2.png",
             "img3": "img/space/slideshow/3.png"
         },
-        "imagesound": "imagesound",
-        "textlink": {
-            "text": "hhhrer",
-            "link": "www.svt.se",
-            "linktext": "fsfds"
+       "imagesound": {
+            "image": "img/space/moonlanding.png",
+            "sound": "img/space/moon.mp3"
         },
-        "imagetext": "imagetext",
-        "bigimage": "bigimage",
-        "smallimage": "smallimage",
-        "landscapeimage": "landscapeimage",
-        "longtext": "longtext"
+        "textlink": {
+            "text": "Space (sometimes called World space) is the relatively empty areas in the " +
+                    "universe that are outside the atmosphere of celestial bodies. Read more at:",
+            "link": "https://sv.wikipedia.org/wiki/Rymden",
+            "linktext": "Space"
+        },
+        "imagetext": {
+            "image": "fuglesang.png",
+            "text": "At 20.47 on the 9th of December 2006, Christer Fuglesang became the first swede in space after a " +
+                    "successful launch at Cape Canaveral in Florida. The space shuttle Discovery was at the speed of 27 000 kilometers per hour six minutes after start. " +
+                    "After some additional minutes, Discovery  aligned to Earth’s orbit path, and Fuglesang could experience zero gravity for the first time."
+        },
+        "bigimage": "img/space/Earth.png",
+        "smallimage": "img/space/Astronaut.png",
+        "landscapeimage": "img/space/spacestation.png",
+        "longtext": "The sun is one of the 100 billion stars that are a part of the Milky Way galaxy. " +
+                    "When getting closer to the sun, we can see that Earth is blue. This is because two thirds " +
+                    "of Earth’s surface is covered by water. The water appears to be blue because blue light has the " +
+                    "shortest wavelength. The water does not absorb the blue light, but instead spreads it in every direction " +
+                    "to our eyes which makes it appear as blue."
     },
     { // Hälsa
-        "text": "textextext",
-        "video": "video",
+        "text": "The word health derives from the Anglo-Saxon word root: hal. When the English language as we know" +
+                " it today was borne in the 1300s, the Old English word root hal evolved into 3 words:" +
+                " health, whole, and holy.",
+        "video": "https://www.youtube.com/embed/9IYJF_teZV4",
         "slideshow": {
             "img1": "img/health/slideshow/1.png",
             "img2": "img/health/slideshow/2.png",
             "img3": "img/health/slideshow/3.png"
         },
-        "imagesound": "imagesound",
-        "textlink": {
-            "text": "hhhrer",
-            "link": "www.svt.se",
-            "linktext": "fsfds"
+        "imagesound": {
+            "image": "img/health/eating.png",
+            "sound": "eating.mp3"
         },
-        "imagetext": "imagetext",
-        "bigimage": "bigimage",
-        "smallimage": "smallimage",
-        "landscapeimage": "landscapeimage",
-        "longtext": "longtext"
+        "textlink": {
+            "text": "Health is a term that can be defined in many ways. According to the World Health Organization’s" +
+                    " definition from 1946, it means “a state of physical, social and mental well being, not only in the" +
+                    " absence of disease and disability”. Read more at:",
+            "link": "https://sv.wikipedia.org/wiki/H%C3%A4lsa",
+            "linktext": "Health"
+        },
+        "imagetext": {
+            "image": "img/health/relaxed.png",
+            "text": "Feeling stressed is something we all have experienced. Stress hits us when we are in " +
+                    "situations that demand something extra, to give the body strength and energy. In the dawn of " +
+                    "mankind, it was a reflex that helped us escape dangers. In the modern day, we rarely have to " +
+                    "physically fight for survival, but we act the same when we are scared, have to run to the bus, " +
+                    "or being swamped in work."
+        },
+        "bigimage": "img/health/boyrun.png",
+        "smallimage": "img/health/kidhands.png",
+        "landscapeimage": "img/health/berries.png",
+        "longtext": "Health is about more than not being sick. It is not enough to be diagnosed as healthy, " +
+                    "but you also need to feel good. But what does that mean? For example, you need to feel that your body is functioning" +
+                    " as it should. If you want to and usually does, you should be able to run. Feeling good is also about having social " +
+                    "relationships that work. This, and also that you can handle the hardships that life throws at you."
     }
   ]
 }
