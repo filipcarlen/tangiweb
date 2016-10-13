@@ -25,8 +25,9 @@
             var currentTheme2 = -1;
             var currentTheme3 = -1;
 
+            var modify = true;
+
             onAddTuioObject = function(addObject) {
-                console.log(content);
                 // Protocol in future
                 // symbolID < 10 => themes and templates and stuff
                 // 1-5: themes
@@ -35,32 +36,54 @@
                 // 20 <= symbolID <= 29 => Theme 2
                 // 30 <= symbolId <= 39 => Theme 3
 
-                // For theme and color elements
-                //if (addObject.xPos > getXMax()){ // make sure that we're only doing this for objects in the "zone"
+                if(modify){
 
-                    // if it is a theme
-                    if(addObject.symbolId <= 6){
+                    // For theme and color elements
+                    if (addObject.xPos > getXMax()) { // make sure that we're only doing this for objects in the "zone"
 
-                        //if top, change theme1
-                        //if mid, change theme2
-                        //if bot, change theme3
+                        // if it is a theme
+                        if (addObject.symbolId < 6) {
 
-                        //send event to render with new stuff
-                        // signalera all skit
-                        currentTheme1 = 1;
-                        $('.theme1').trigger({
-                            type: "renderTheme",
-                            theme: currentTheme1,
-                            themeName: 'theme1'
-                        });
+                            if (addObject.yPos > 0 && addObject.yPos < 0.2) {
+                                console.log("1");
+                                currentTheme1 = addObject.symbolId;
+                                $('.theme1').trigger({
+                                    type: "renderTheme",
+                                    theme: currentTheme1,
+                                    themeName: 'theme1'
+                                });
+                            } else if(addObject.yPos > 0.2 && addObject.yPos < 0.4){
+                                console.log("2");
+                                currentTheme2 = addObject.symbolId;
+                                $('.theme2').trigger({
+                                    type: "renderTheme",
+                                    theme: currentTheme2,
+                                    themeName: 'theme2'
+                                });
+                            } else if(addObject.yPos > 0.4 && addObject.yPos < 0.6){
+                                console.log("3");
+                                currentTheme3 = addObject.symbolId;
+                                $('.theme3').trigger({
+                                    type: "renderTheme",
+                                    theme: currentTheme3,
+                                    themeName: 'theme3'
+                                });
+                            }
+                            // if it is a background color
+                        } if (addObject.symbolId >= 6 && addObject.symbolId <= 9 && addObject.yPos > 0.5) {
 
-                    // if it is a background color
-                    } else if (addObject.symbolId >= 6 && addObject.symbolId <=9){
-                        document.getElementById('body').style.background = "-webkit-linear-gradient(top, #00E9E9, #F6F600)";
+                            if(addObject.symbolId == 6){
+                                document.getElementById('body').style.background = "-webkit-linear-gradient(top, #ecf0f1, #008000)";
+                            } else if(addObject.symbolId == 7){
+                                document.getElementById('body').style.background = "-webkit-linear-gradient(top, #ecf0f1, #0000FF)";
+                            } else if (addObject.symbolId == 8){
+                                document.getElementById('body').style.background = "-webkit-linear-gradient(top, #ecf0f1, #e59400)";
+                            } else if (addObject.symbolId == 9){
+                                document.getElementById('body').style.background = "-webkit-linear-gradient(top, #ecf0f1, #800080)";
+                            }
+                        }
                     }
 
-
-                //} else {
 
                     // kolla vilken typ av element det är via id. rendera med rätt höjd/bredd
 
@@ -107,118 +130,125 @@
                         $('.container').append($('<div id='+addObject.symbolId+'>')
                             .load("templates/"+elementType+".html", function(){
 
-                                $('#'+addObject.symbolId).addClass('element theme3');
-                                $('#'+addObject.symbolId).css('width',sizeObjects[elementType].width+"%");
-                                $('#'+addObject.symbolId).css('height',sizeObjects[elementType].height+"%");
+                            $('#'+addObject.symbolId).addClass('element theme3');
+                            $('#'+addObject.symbolId).css('width',sizeObjects[elementType].width+"%");
+                            $('#'+addObject.symbolId).css('height',sizeObjects[elementType].height+"%");
 
-                                //render with current theme.
-                                $('#'+addObject.symbolId).trigger({
-                                    type: "renderTheme",
-                                    theme: currentTheme3,
-                                    id: addObject.symbolId
-                                });
-                            }));
+                            //render with current theme.
+                            $('#'+addObject.symbolId).trigger({
+                                type: "renderTheme",
+                                theme: currentTheme3,
+                                id: addObject.symbolId
+                            });
+                        }));
                     }
-                //}
+                }
             },
 
             onUpdateTuioObject = function(updateObject){
-                // console.log(updateObject);
-                if($('#'+updateObject.symbolId).length){
-                    var b = document.getElementById(updateObject.symbolId);
-                    var width = parseInt(b.style.width.substring(0, b.style.width.length - 1));
-                    var height = parseInt(b.style.height.substring(0, b.style.height.length - 1));
-                    var xPos = 100-calculateXPosition((width/100), updateObject.xPos).toFixed(0);
-                    var yPos = calculateYPosition((height/100), updateObject.yPos).toFixed(0);
 
-                    if(xPos%2 !== 0){
-                        xPos++;
+                if(modify) {
+                    // console.log(updateObject);
+                    if ($('#' + updateObject.symbolId).length) {
+                        var b = document.getElementById(updateObject.symbolId);
+                        var width = parseInt(b.style.width.substring(0, b.style.width.length - 1));
+                        var height = parseInt(b.style.height.substring(0, b.style.height.length - 1));
+                        var xPos = 100 - calculateXPosition((width / 100), updateObject.xPos).toFixed(0);
+                        var yPos = calculateYPosition((height / 100), updateObject.yPos).toFixed(0);
+
+                        if (xPos % 2 !== 0) {
+                            xPos++;
+                        }
+
+                        if (yPos % 2 !== 0) {
+                            yPos++;
+                        }
+
+                        // Make the div stay inside of containers bounds
+                        if (yPos < 0) {
+                            yPos = 0;
+                        } else if (yPos > 67) {
+                            yPos = 67;
+                        }
+                        if (xPos < 0) {
+                            xPos = 0;
+                        } else if (xPos > 80) {
+                            xPos = 81;
+                        }
+
+                        console.log("id: " + updateObject.symbolId + "    xPos: " + xPos + "| yPos: " + yPos);
+
+
+                        //                    if(0 <= xPos && 20 > xPos ){
+                        //                        b.style.left = 0 +'%';
+                        //                    } else if(20 <= xPos && 40 > xPos ) {
+                        //                        b.style.left = 20 + '%';
+                        //                    } else if(40 <= xPos && 60 > xPos ) {
+                        //                        b.style.left = 40 + '%';
+                        //                    } else if(60 <= xPos && 80 > xPos ) {
+                        //                        b.style.left = 60 + '%';
+                        //                    } else {// (80 <= xPos && 100 > xPos ) {
+                        //                        b.style.left = 80 + '%';
+                        //                    }
+                        //
+                        //
+                        //                    if(0 <= yPos && 33 > yPos ){
+                        //                        b.style.top = 0 +'%';
+                        //                    } else if(33 <= yPos && 66 > yPos ) {
+                        //                        b.style.top = 33 + '%';
+                        //                    } else { //(66 <= yPos && 100 > yPos ) {
+                        //                        b.style.top = 66 + '%';
+                        //                    }
+
+
+                        // set values
+                        b.style.left = xPos + '%';
+                        b.style.top = yPos + '%';
+                        b.style.opacity = 1;
                     }
-
-                    if(yPos%2 !== 0){
-                        yPos++;
-                    }
-
-                    // Make the div stay inside of containers bounds
-                    if(yPos < 0){
-                        yPos = 0;
-                    } else if(yPos > 67){
-                        yPos = 67;
-                    }
-                    if(xPos < 0){
-                        xPos = 0;
-                    } else if(xPos > 80){
-                        xPos = 81;
-                    }
-
-                    console.log("id: "+updateObject.symbolId+ "    xPos: "+xPos+"| yPos: "+yPos);
-
-
-//                    if(0 <= xPos && 20 > xPos ){
-//                        b.style.left = 0 +'%';
-//                    } else if(20 <= xPos && 40 > xPos ) {
-//                        b.style.left = 20 + '%';
-//                    } else if(40 <= xPos && 60 > xPos ) {
-//                        b.style.left = 40 + '%';
-//                    } else if(60 <= xPos && 80 > xPos ) {
-//                        b.style.left = 60 + '%';
-//                    } else {// (80 <= xPos && 100 > xPos ) {
-//                        b.style.left = 80 + '%';
-//                    }
-//
-//
-//                    if(0 <= yPos && 33 > yPos ){
-//                        b.style.top = 0 +'%';
-//                    } else if(33 <= yPos && 66 > yPos ) {
-//                        b.style.top = 33 + '%';
-//                    } else { //(66 <= yPos && 100 > yPos ) {
-//                        b.style.top = 66 + '%';
-//                    }
-
-
-
-                    // set values
-                    b.style.left = xPos+ '%';
-                    b.style.top = yPos+ '%';
-                    b.style.opacity = 1;
                 }
             },
 
             onRemoveTuioObject = function(removeObject) {
-                //Måste kolla positionen annars äre ingen succé
-                if(removeObject.symbolId <=  6){
-                    if(currentTheme1 > 0){
-                        currentTheme1 = -1;
-                        $('.theme1').trigger({
-                            type: "renderTheme",
-                            theme: currentTheme1,
-                            themeName: 'theme1',
-                            themeRemoved: true
-                        });
-                    } else if(currentTheme2 > 0){
-                        currentTheme2 = -1;
-                        $('.theme2').trigger({
-                            type: "renderTheme",
-                            theme: currentTheme2,
-                            themeName: 'theme2',
-                            themeRemoved: true
-                        });
+                if(modify) {
 
-                    } else if(currentTheme3 > 0){
-                        currentTheme3 = -1;
-                        $('.theme3').trigger({
-                            type: "renderTheme",
-                            theme: currentTheme3,
-                            themeName: 'theme3',
-                            themeRemoved: true
-                        });
+                    if (removeObject.symbolId < 6) {
+                        if (removeObject.yPos > 0 && removeObject.yPos < 0.2 && currentTheme1 > 0) {
+                            currentTheme1 = -1;
+                            $('.theme1').trigger({
+                                type: "renderTheme",
+                                theme: currentTheme1,
+                                themeName: 'theme1',
+                                themeRemoved: true
+                            });
+                        } else if (removeObject.yPos > 0.2 && removeObject.yPos < 0.4 && currentTheme2 > 0) {
+                            currentTheme2 = -1;
+                            $('.theme2').trigger({
+                                type: "renderTheme",
+                                theme: currentTheme2,
+                                themeName: 'theme2',
+                                themeRemoved: true
+                            });
+
+                        } else if (removeObject.yPos > 0.4 && removeObject.yPos < 0.6 && currentTheme3 > 0) {
+                            currentTheme3 = -1;
+                            $('.theme3').trigger({
+                                type: "renderTheme",
+                                theme: currentTheme3,
+                                themeName: 'theme3',
+                                themeRemoved: true
+                            });
+                        }
+
+                    } else if (removeObject.symbolId >= 6 && removeObject.symbolId <= 9 && removeObject.yPos > 0.45) {
+                        document.getElementById('body').style.background = "-webkit-linear-gradient(top, #ecf0f1, #c0392b)";
+                    } else {
+                        if ($('#' + removeObject.symbolId).length) {
+                            $("#" + removeObject.symbolId).detach();
+                        }
                     }
-                } else {
-                    if($('#'+removeObject.symbolId).length){
-                        $("#"+removeObject.symbolId).detach();
-                    }
+                    console.log(removeObject);
                 }
-                console.log(removeObject);
 
                 //stuff about backgroundcolor osv..
                 /**if(removeObject.symbolId === 6){
@@ -296,6 +326,57 @@
             onRefresh = function(time) {
                 
             };
+
+             move = function() {
+                 //get width (percent)
+                 var elem = $("#myBar");
+                 var width = 1;
+                 var id = setInterval(frame, 10);
+                 function frame() {
+                     if (width >= 100) {
+                         clearInterval(id);
+                     } else {
+                         width++;
+                         elem.style.width = width + '%';
+                     }
+                 }
+             }
+
+            var barWidth = 0;
+
+            $(document).keydown(function(e) {
+                if(e.which == 32) {
+                    if ($("#myProgress").length == 0) {
+                        $(".container").append('<div id="myProgress"><div id="myBar"></div></div>');
+                        console.log("modify: "+ modify);
+                        modify = false;
+                    } else {
+                        if(barWidth < 100){
+                            barWidth = barWidth + 2;
+                        } else {
+                            barWidth = 0;
+                            $("#myProgress").detach();
+                            var markup = document.documentElement.innerHTML;
+                            var opened = window.open("generation.html");
+                            opened.document.write(markup);
+                        }
+                        $("#myBar").css( "width", barWidth+"%" );
+                    }
+                }
+            });
+
+             $(document).keyup(function(e) {
+                 if(e.which == 32) {
+                     if ($("#myProgress").length > 0) {
+                         $("#myProgress").detach();
+                         modify = true;
+                         barWidth = 0;
+                     }
+                 }
+             });
+
+
+
 
             client.on("connect", onConnect);
             client.on("addTuioCursor", onAddTuioCursor);

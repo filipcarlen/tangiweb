@@ -1,4 +1,4 @@
-<div class="innerElement" style="">
+<div class="innerElement">
     <div id="carousel" class="carousel slide" data-ride="carousel" style="width: 100%; height: 100%;">
         <!-- Indicators -->
         <ol class="carousel-indicators">
@@ -36,7 +36,6 @@
 
 <script>
     $(document.body).on("renderTheme", function (e){
-        $("#carousel").carousel();
 
         if(e.hasOwnProperty("themeRemoved")){
             $('.'+ e.themeName).find('.slideshow1').attr("src","");
@@ -49,10 +48,12 @@
                 $('#'+ e.id).find('.slideshow1').attr("src",content.themes[e.theme].slideshow.img1);
                 $('#'+ e.id).find('.slideshow2').attr("src",content.themes[e.theme].slideshow.img2);
                 $('#'+ e.id).find('.slideshow3').attr("src",content.themes[e.theme].slideshow.img3);
+                $('#'+ e.id).find("#carousel").carousel();
             } else if (e.hasOwnProperty("themeName")){
                 $( "."+ e.themeName).find('.slideshow1').attr("src",content.themes[e.theme].slideshow.img1);
                 $( "."+ e.themeName).find('.slideshow2').attr("src",content.themes[e.theme].slideshow.img2);
                 $( "."+ e.themeName).find('.slideshow3').attr("src",content.themes[e.theme].slideshow.img3);
+                $( "."+ e.themeName).find("#carousel").carousel();
             }
         }
         else {

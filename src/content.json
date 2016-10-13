@@ -11,7 +11,7 @@ var content = {
             "img3": "img/rainforest/slideshow/3.png"
         },
         "imagesound": {
-            "image": "img/rainforst/frog.png",
+            "image": "img/rainforest/frog.png",
             "sound": "img/rainforest/frog.mp3"
         },
         "textlink": {
@@ -21,9 +21,9 @@ var content = {
             "linktext": "Rainforest"
         },
         "imagetext": {
-            "image": "hjalmbasilisk.png",
-            "text": "Plummed Basilisk2" +
-                    "(Basiliscus plumifrons)" +
+            "image": "img/rainforest/hjalmbasilisk.png",
+            "text": "Plummed Basilisk2 " +
+                    "(Basiliscus plumifrons) " +
                     "A basilisk can run several meters on water on its rear legs. Therefore, it is sometimes refered to as the Jesus lizard."
         },
         "bigimage": "img/rainforest/Goeldisapa.png",
@@ -55,7 +55,7 @@ var content = {
             "linktext": "Space"
         },
         "imagetext": {
-            "image": "fuglesang.png",
+            "image": "img/space/fuglesang.png",
             "text": "At 20.47 on the 9th of December 2006, Christer Fuglesang became the first swede in space after a " +
                     "successful launch at Cape Canaveral in Florida. The space shuttle Discovery was at the speed of 27 000 kilometers per hour six minutes after start. " +
                     "After some additional minutes, Discovery  aligned to Earth’s orbit path, and Fuglesang could experience zero gravity for the first time."
