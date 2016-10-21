@@ -3,12 +3,60 @@ html{
 }
 
 .myHeader{
-	height:10%;
+	height:8%;
 	width: 100%;
 	background-color: white;
 	margin: 0;
-	padding: 10px;
+	padding: 0 5px 0 5px;
 	box-shadow: 0 7px 15px #4A4A4A;
+}
+
+#intro{
+    width: 70%;
+    height: 80%;
+    margin: 0 auto;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 10px;
+}
+
+#img-container{
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#feedback{
+    width: 0px;
+    height: 180px;
+    margin-left: 0px;
+    position: absolute;
+    background-color: rgba(0,0,0,0.5);
+    text-align: right;
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+#feedback-content{
+    border-color: #000000;
+    margin-right: 10px;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#theme-text{
+    font-size: 20px;
+    font-weight: 400;
+    color: #ffffff;
+}
+
+#theme-img{
+    width: 60%;
+    height: auto;
 }
 
 body {
@@ -17,51 +65,70 @@ body {
 	position:relative;
 	margin: 0;
 	background: #ffbaba; /* Old browsers */
-	background: -webkit-linear-gradient(top, #ecf0f1 0%,#c0392b 100%); /* Chrome10-25,Safari5.1-6 */
+    background-color: grey;
+    background-image: url("../img/TangiWebLogoWithAlpha.png");
+    background-position: center;
 }
 
 .container {
-	height: 90%;
+	height: 85%;
 	width: 100%;
 	position: relative;
+    margin-top: 20px;
 }
 
 .myFooter {
-	height: 10%;
+	height: 6%;
 	width: 100%;
 	background-color: white;
 	margin: 0;
-	padding: 25px 20px 20px 0;
 }
 
 .element {
 	position: absolute;
-	background-color: clear; 
 	opacity: 0;
-    text-align: center;
+    background-color: clear;
     padding: 0.25%;
+    text-align: center;
 }
 
 .innerElement {
+    background-color: rgba(255,255,255,0.3);
     width: 100%;
     height: 100%;
-    border-radius: 25px;
+    border-radius: 4px;
     top: 0;
     left: 0;
     border-style: solid;
+    box-shadow: 0 5px 5px #4A4A4A;
+}
+
+.theme1 .innerElement{
+    border-color: red;
     border-width: 2px;
-    border-color: #000000;
+}
+
+.theme2 .innerElement{
+    border-color: blue;
+    border-width: 2px;
+}
+
+.theme3 .innerElement{
+    border-color: orange;
+    border-width: 2px;
 }
 
 #myProgress {
-    position: relative;
+    position: absolute;
+    left: 25%;
     top: 50%;
     transform: translateY(-50%);
     width: 50%;
-    margin: 0 auto;
     height: 10%;
-    background-color: grey;
+    background-color: white;
+    margin-bottom: 50px;
 }
+
 #myBar {
     position: absolute;
     width: 1%;
@@ -70,11 +137,61 @@ body {
     transition: all 0.2s;
 }
 
-p{
+.footer-link{
+    font-size: 20px;
+    font-weight: 400;
+    color: black;
+    margin-top: 15px;
+}
 
+p{
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.longtext{
+    font-size: 20px;
+    font-weight: 500;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.textimage{
+    font-size: 16px;
+    font-weight: 300;
+    position: relative;
+    top: 25%;
+    transform: translateY(-40%);
+}
+
+.link{
+    font-size: 20px;
+    color: blue;
+}
+
+.placeholder{
+    width: 90%;
+    height: 90%;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0 auto;
+}
+
+#tmpimg{
+    width: 100%;
+    height: 100%;
+}
+
+.textelements{
+    top: 50%;
+    transform: translateY(-50%);
+    position: relative;
 }
 
 h1, h2, h3, h4, a, p, img{
     padding: 0;
     margin: 0;
+    font-family: 'Work Sans', sans-serif;
 }

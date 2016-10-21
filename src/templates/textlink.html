@@ -1,6 +1,11 @@
-<div class="innerElement">
-    <p class="textlink"></p>
-    <a class="link" href=""></a>
+<div class="innerElement" style="background-color: rgba(255,255,255,0.3); margin-top: 5px;">
+    <div class="placeholder">
+        <img id="tmpimg" src="img/placeholders/placeholderTextLink.png">
+    </div>
+    <div class="textelements">
+        <p class="textlink"></p>
+        <a class="link" href=""></a>
+    </div>
 </div>
 
 <script>
@@ -10,16 +15,20 @@
             $('.'+ e.themeName).find('.textlink').text("");
             $('.'+ e.themeName).find('.link').text("");
             $('.'+ e.themeName).find('.link').attr("href","");
+            $( '.'+ e.themeName).find('.innerElement').css("border-width", "2px");
+            $('.'+ e.themeName).find('.placeholder').show();
         }
 
         else if(e.theme > 0){ //Do stuff if theme exists
             if(e.hasOwnProperty("id")){
+                $('#'+ e.id).find('.placeholder').hide();
                 $('#'+ e.id).find('.textlink').text(content.themes[e.theme].textlink.text);
                 $('#'+ e.id).find('.link').text(content.themes[e.theme].textlink.linktext);
                 $('#'+ e.id).find('.link').attr("href",content.themes[e.theme].textlink.link);
 
 
             } else if (e.hasOwnProperty("themeName")){
+                $('.'+ e.themeName).find('.placeholder').hide();
                 $( "."+ e.themeName).find(".textlink").text(content.themes[e.theme].textlink.text);
                 $( "."+ e.themeName).find(".link").text(content.themes[e.theme].textlink.linktext);
                 $( "."+ e.themeName).find(".link").attr("href",content.themes[e.theme].textlink.link)
@@ -29,6 +38,7 @@
             $('#'+ e.id).find('.textlink').text("");
             $('#'+ e.id).find('.link').text("");
             $('#'+ e.id).find('.link').attr("href","");
+            $('#'+ e.id).find('.placeholder').show();
         }
     });
 </script>

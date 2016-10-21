@@ -2,6 +2,8 @@ var content = {
   "themes":[
     {}, // Empty dummy element (index 0..)
     { //regnskog
+        "name": "Rainforest",
+        "themeImage": "img/rainforest/Rainforest.png",
         "text": "Four million different plant- and animal species has their home in the rainforest." +
                 " All of them cannot be found at Universeum, and not all of them are discovered yet.",
         "video": "https://www.youtube.com/embed/yp0lrDHMFmY",
@@ -18,13 +20,13 @@ var content = {
             "text": " A Rainforest is a forest with a high annual rainfall, at least 1500 millimeter distributed" +
                     " over a minimum of nine months. Real rainforest only exist in the tropics. Read more at:",
             "link": "https://sv.wikipedia.org/wiki/Regnskog",
-            "linktext": "Rainforest"
+            "linktext": "Wikipedia"
         },
         "imagetext": {
             "image": "img/rainforest/hjalmbasilisk.png",
-            "text": "Plummed Basilisk2 " +
-                    "(Basiliscus plumifrons) " +
-                    "A basilisk can run several meters on water on its rear legs. Therefore, it is sometimes refered to as the Jesus lizard."
+            "text": "Plumed Basilisk (Basiliscus plumifrons) A basilisk can run several meters on water on its rear legs." +
+                    " Therefore, it is sometimes refered to as the Jesus lizard. Plumed basilisks are one of the largest basilisk species, " +
+                    "with an average body length of approximately 10 inches (25 cm). Including the tail, they can reach 3 feet (91 cm) long."
         },
         "bigimage": "img/rainforest/Goeldisapa.png",
         "smallimage": "img/rainforest/frog.png",
@@ -36,6 +38,8 @@ var content = {
 
     },
     { // rymd
+        "name": "Space",
+        "themeImage": "img/space/Space.png",
         "text": "There can be a 300 degree celsius difference between light and shadow outside the space station." +
                 " The surfaces that are facing the sun are really really hot, and the ones in shadow are freezing.",
         "video": "https://www.youtube.com/embed/Lq_shHu4lAs",
@@ -52,7 +56,7 @@ var content = {
             "text": "Space (sometimes called World space) is the relatively empty areas in the " +
                     "universe that are outside the atmosphere of celestial bodies. Read more at:",
             "link": "https://sv.wikipedia.org/wiki/Rymden",
-            "linktext": "Space"
+            "linktext": "Wikipedia"
         },
         "imagetext": {
             "image": "img/space/fuglesang.png",
@@ -70,6 +74,8 @@ var content = {
                     "to our eyes which makes it appear as blue."
     },
     { // Hälsa
+        "name": "Health",
+        "themeImage": "img/health/Health.png",
         "text": "The word health derives from the Anglo-Saxon word root: hal. When the English language as we know" +
                 " it today was borne in the 1300s, the Old English word root hal evolved into 3 words:" +
                 " health, whole, and holy.",
@@ -88,7 +94,7 @@ var content = {
                     " definition from 1946, it means “a state of physical, social and mental well being, not only in the" +
                     " absence of disease and disability”. Read more at:",
             "link": "https://sv.wikipedia.org/wiki/H%C3%A4lsa",
-            "linktext": "Health"
+            "linktext": "Wikipedia"
         },
         "imagetext": {
             "image": "img/health/relaxed.png",

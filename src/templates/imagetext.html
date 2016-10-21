@@ -1,6 +1,9 @@
-<div class="innerElement" style=" padding: 10px;">
-    <img class="imagetext" src="" style="width: 100%; height: 50%; border-radius: 25px;">
-    <p class="textimage" style= "margin-top: 10px"></p>
+<div class="innerElement" style="background-color: rgba(255,255,255,0.3);">
+    <div class="placeholder" style="width:100%; height:50%">
+        <img id="tmpimg" src="img/placeholders/placeholderImageText.png">
+    </div>
+    <img class="imagetext" src="" style="width: 100%; height: 40%; border-radius: 5px;">
+    <p class="textimage" style="margin: 5px;"></p>
 </div>
 
 <script>
@@ -9,14 +12,20 @@
         if(e.hasOwnProperty("themeRemoved")){
             $('.'+ e.themeName).find('.textimage').text("");
             $('.'+ e.themeName).find('.imagetext').attr("src","");
+            $('.'+ e.themeName).find('.imagetext').hide();
+            $('.'+ e.themeName).find('.placeholder').show();
+
         }
 
         else if(e.theme > 0){ //Do stuff if theme exists
             if(e.hasOwnProperty("id")){
+                $('#'+ e.id).find('.placeholder').hide();
                 $('#'+ e.id).find('.textimage').text(content.themes[e.theme].imagetext.text);
                 $('#'+ e.id).find('.imagetext').attr("src",content.themes[e.theme].imagetext.image);
 
             } else if (e.hasOwnProperty("themeName")){
+                $('.'+ e.themeName).find('.placeholder').hide();
+                $('.'+ e.themeName).find('.imagetext').show();
                 $( "."+ e.themeName).find(".textimage").text(content.themes[e.theme].imagetext.text);
                 $( "."+ e.themeName).find(".imagetext").attr("src",content.themes[e.theme].imagetext.image);
             }
@@ -24,6 +33,8 @@
         else {
             $('#'+ e.id).find('.textimage').text("");
             $('#'+ e.id).find('.imagetext').attr("src","");
+            $('#'+ e.id).find('.imagetext').hide();
+            $('#'+ e.id).find('.placeholder').show();
         }
     });
 </script>

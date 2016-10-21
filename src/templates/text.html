@@ -1,5 +1,8 @@
-<div class="innerElement"">
-    <p class="text"></p>
+<div class="innerElement" style="background-color: rgba(255,255,255,0.3); padding: 5px;">
+<div class="placeholder">
+    <img id="tmpimg" src="img/placeholders/placeholderText.png">
+</div>
+    <p class="text textelements"></p>
 </div>
 
 <script>
@@ -7,17 +10,22 @@
 
         if(e.hasOwnProperty("themeRemoved")){
             $('.'+ e.themeName).find('.text').text("");
+            $('.'+ e.themeName).find('.placeholder').show();
+
         }
 
         else if(e.theme > 0){ //Do stuff if theme exists
             if(e.hasOwnProperty("id")){
+                $('#'+ e.id).find('.placeholder').hide();
                 $('#'+ e.id).find('.text').text(content.themes[e.theme].text);
             } else if (e.hasOwnProperty("themeName")){
+                $('.'+ e.themeName).find('.placeholder').hide();
                 $( "."+ e.themeName).find(".text").text(content.themes[e.theme].text);
             }
         }
         else {
             $('#'+ e.id).find('.text').text("");
+            $('#'+ e.id).find('.placeholder').show();
         }
     });
 </script>

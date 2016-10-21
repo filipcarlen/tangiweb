@@ -24,6 +24,7 @@
             var currentTheme1 = -1;
             var currentTheme2 = -1;
             var currentTheme3 = -1;
+            var numberOfElements = 0;
 
             var modify = true;
 
@@ -37,6 +38,11 @@
                 // 30 <= symbolId <= 39 => Theme 3
 
                 if(modify){
+                    numberOfElements = numberOfElements + 1;
+
+
+                    // remove intro screen
+                    $("#intro").hide();
 
                     // For theme and color elements
                     if (addObject.xPos > getXMax()) { // make sure that we're only doing this for objects in the "zone"
@@ -44,16 +50,36 @@
                         // if it is a theme
                         if (addObject.symbolId < 6) {
 
+                            //$('.container').append('<div id="feedback"><div id="texts"><p id="feedback-text"></p><p id="feedback-text-2"></p></div></div>');
+                            $('.container').append(
+
+                                    '<div id="feedback">' +
+                                        '<div id="feedback-content">' +
+                                            '<p id="theme-text"></p>' +
+                                            '<img id="theme-img" src="">' +
+                                        '</div>' +
+                                    '</div>');
+
+
                             if (addObject.yPos > 0 && addObject.yPos < 0.2) {
-                                console.log("1");
+
+                                $( "#feedback").css("background-color", "red");
+                                $( "#feedback").css("top", "5%");
+                                $('#theme-text').text("Red content blocks:");
+
                                 currentTheme1 = addObject.symbolId;
+
                                 $('.theme1').trigger({
                                     type: "renderTheme",
                                     theme: currentTheme1,
                                     themeName: 'theme1'
                                 });
                             } else if(addObject.yPos > 0.2 && addObject.yPos < 0.4){
-                                console.log("2");
+
+                                $( "#feedback").css("background-color", "blue");
+                                $( "#feedback").css("top", "30%");
+                                $('#theme-text').text("Blue content blocks:");
+
                                 currentTheme2 = addObject.symbolId;
                                 $('.theme2').trigger({
                                     type: "renderTheme",
@@ -61,7 +87,12 @@
                                     themeName: 'theme2'
                                 });
                             } else if(addObject.yPos > 0.4 && addObject.yPos < 0.6){
-                                console.log("3");
+
+                                $( "#feedback").css("background-color", "orange");
+                                $( "#feedback").css("top", "55%");
+                                $('#theme-text').text("Orange content blocks:");
+
+
                                 currentTheme3 = addObject.symbolId;
                                 $('.theme3').trigger({
                                     type: "renderTheme",
@@ -69,6 +100,20 @@
                                     themeName: 'theme3'
                                 });
                             }
+
+                            $('#feedback-content').find('img').attr('src', content.themes[addObject.symbolId].themeImage);
+
+                            $( "#feedback" )
+                                .animate({
+                                    width: "250px"
+                                }, 500 )
+                                .delay(2500)
+                                .animate({
+                                    width: "0px"
+                                }, 300,function() {
+                                    $("#feedback").detach();
+                                });
+
                             // if it is a background color
                         } if (addObject.symbolId >= 6 && addObject.symbolId <= 9 && addObject.yPos > 0.5) {
 
@@ -179,27 +224,6 @@
                         console.log("id: " + updateObject.symbolId + "    xPos: " + xPos + "| yPos: " + yPos);
 
 
-                        //                    if(0 <= xPos && 20 > xPos ){
-                        //                        b.style.left = 0 +'%';
-                        //                    } else if(20 <= xPos && 40 > xPos ) {
-                        //                        b.style.left = 20 + '%';
-                        //                    } else if(40 <= xPos && 60 > xPos ) {
-                        //                        b.style.left = 40 + '%';
-                        //                    } else if(60 <= xPos && 80 > xPos ) {
-                        //                        b.style.left = 60 + '%';
-                        //                    } else {// (80 <= xPos && 100 > xPos ) {
-                        //                        b.style.left = 80 + '%';
-                        //                    }
-                        //
-                        //
-                        //                    if(0 <= yPos && 33 > yPos ){
-                        //                        b.style.top = 0 +'%';
-                        //                    } else if(33 <= yPos && 66 > yPos ) {
-                        //                        b.style.top = 33 + '%';
-                        //                    } else { //(66 <= yPos && 100 > yPos ) {
-                        //                        b.style.top = 66 + '%';
-                        //                    }
-
 
                         // set values
                         b.style.left = xPos + '%';
@@ -211,6 +235,8 @@
 
             onRemoveTuioObject = function(removeObject) {
                 if(modify) {
+
+                    numberOfElements = numberOfElements - 1;
 
                     if (removeObject.symbolId < 6) {
                         if (removeObject.yPos > 0 && removeObject.yPos < 0.2 && currentTheme1 > 0) {
@@ -241,11 +267,19 @@
                         }
 
                     } else if (removeObject.symbolId >= 6 && removeObject.symbolId <= 9 && removeObject.yPos > 0.45) {
-                        document.getElementById('body').style.background = "-webkit-linear-gradient(top, #ecf0f1, #c0392b)";
+                        //document.getElementById('body').style.background = "-webkit-linear-gradient(top, #ecf0f1, #ffffff)";
+                        $(document.body).css('background-image','url("img/TangiWebLogoWithAlpha.png")');
+                        $(document.body).css('background-position','center');
+                        $(document.body).css('background-color', 'grey');
+
                     } else {
                         if ($('#' + removeObject.symbolId).length) {
                             $("#" + removeObject.symbolId).detach();
                         }
+                    }
+
+                    if(numberOfElements === 0){
+                        $("#intro").show();
                     }
                     console.log(removeObject);
                 }
@@ -316,7 +350,7 @@
             },
 
             getXMax = function() {
-                return 0.90;
+                return 0.89;
             },
 
             getYMax = function() {
@@ -327,32 +361,18 @@
                 
             };
 
-             move = function() {
-                 //get width (percent)
-                 var elem = $("#myBar");
-                 var width = 1;
-                 var id = setInterval(frame, 10);
-                 function frame() {
-                     if (width >= 100) {
-                         clearInterval(id);
-                     } else {
-                         width++;
-                         elem.style.width = width + '%';
-                     }
-                 }
-             }
-
             var barWidth = 0;
 
             $(document).keydown(function(e) {
                 if(e.which == 32) {
+                    $(".innerElement").css("border-width", "0px");
                     if ($("#myProgress").length == 0) {
                         $(".container").append('<div id="myProgress"><div id="myBar"></div></div>');
                         console.log("modify: "+ modify);
                         modify = false;
                     } else {
                         if(barWidth < 100){
-                            barWidth = barWidth + 2;
+                            barWidth = barWidth + 5;
                         } else {
                             barWidth = 0;
                             $("#myProgress").detach();
@@ -369,6 +389,7 @@
                  if(e.which == 32) {
                      if ($("#myProgress").length > 0) {
                          $("#myProgress").detach();
+                         $(".innerElement").css("border-width", "2px");
                          modify = true;
                          barWidth = 0;
                      }

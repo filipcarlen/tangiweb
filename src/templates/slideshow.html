@@ -1,10 +1,13 @@
 <div class="innerElement">
-    <div id="carousel" class="carousel slide" data-ride="carousel" style="width: 100%; height: 100%;">
+    <div class="placeholder">
+        <img id="tmpimg" src="img/placeholders/placeholderSlideshow.png">
+    </div>
+    <div class="carousel" class="carousel slide" data-ride="carousel" style="width: 100%; height: 100%;">
         <!-- Indicators -->
         <ol class="carousel-indicators">
-            <li data-target="#carousel" data-slide-to="0" class="active"></li>
-            <li data-target="#carousel" data-slide-to="1"></li>
-            <li data-target="#carousel" data-slide-to="2"></li>
+            <li data-target=".carousel" data-slide-to="0" class="active"></li>
+            <li data-target=".carousel" data-slide-to="1"></li>
+            <li data-target=".carousel" data-slide-to="2"></li>
         </ol>
 
         <!-- Wrapper for slides -->
@@ -23,11 +26,11 @@
         </div>
 
         <!-- Left and right controls -->
-        <a class="left carousel-control" href="#carousel" role="button" data-slide="prev">
+        <a class="left carousel-control" href=".carousel" role="button" data-slide="prev">
             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
         </a>
-        <a class="right carousel-control" href="#carousel" role="button" data-slide="next">
+        <a class="right carousel-control" href=".carousel" role="button" data-slide="next">
             <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
         </a>
@@ -38,27 +41,36 @@
     $(document.body).on("renderTheme", function (e){
 
         if(e.hasOwnProperty("themeRemoved")){
+
+            $('.'+ e.themeName).find('.carousel').hide();
             $('.'+ e.themeName).find('.slideshow1').attr("src","");
             $('.'+ e.themeName).find('.slideshow2').attr("src","");
             $('.'+ e.themeName).find('.slideshow3').attr("src","");
+            $('.'+ e.themeName).find('.placeholder').show();
         }
 
         else if(e.theme > 0){ //Do stuff if theme exists
             if(e.hasOwnProperty("id")){
+                $('#'+ e.id).find('.placeholder').hide();
+                $('#'+ e.id).find('.carousel').show();
                 $('#'+ e.id).find('.slideshow1').attr("src",content.themes[e.theme].slideshow.img1);
                 $('#'+ e.id).find('.slideshow2').attr("src",content.themes[e.theme].slideshow.img2);
                 $('#'+ e.id).find('.slideshow3').attr("src",content.themes[e.theme].slideshow.img3);
-                $('#'+ e.id).find("#carousel").carousel();
+                $('#'+ e.id).find(".carousel").carousel();
             } else if (e.hasOwnProperty("themeName")){
+                $('.'+ e.themeName).find('.placeholder').hide();
+                $('.'+ e.themeName).find('.carousel').show();
                 $( "."+ e.themeName).find('.slideshow1').attr("src",content.themes[e.theme].slideshow.img1);
                 $( "."+ e.themeName).find('.slideshow2').attr("src",content.themes[e.theme].slideshow.img2);
                 $( "."+ e.themeName).find('.slideshow3').attr("src",content.themes[e.theme].slideshow.img3);
-                $( "."+ e.themeName).find("#carousel").carousel();
+                $( "."+ e.themeName).find(".carousel").carousel();
             }
         }
         else {
-            $('.'+ e.themeName).find('.slideshow1').attr("src","");
-            $('.'+ e.themeName).find('.slideshow2').attr("src","");
-            $('.'+ e.themeName).find('.slideshow3').attr("src","");
+            $('#'+ e.id).find('.carousel').hide();
+            $('#'+ e.id).find('.slideshow1').attr("src","");
+            $('#'+ e.id).find('.slideshow2').attr("src","");
+            $('#'+ e.id).find('.slideshow3').attr("src","");
+            $('#'+ e.id).find('.placeholder').show();
         }
     });
